@@ -1,5 +1,6 @@
 package com.rudari.isa.models.users;
 
+import com.rudari.isa.models.faculty.Title;
 import com.rudari.isa.models.organisationalunits.AdministrativeDuty;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,4 +15,6 @@ public class Teacher extends User {
 
     @OneToMany(mappedBy = "teacher")
     private List<AdministrativeDuty> administrativeDuties;
+    @OneToMany(mappedBy = "teacher")
+    private List<Title> titles;
 }

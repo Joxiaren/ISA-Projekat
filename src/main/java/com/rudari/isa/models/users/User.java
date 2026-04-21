@@ -4,7 +4,7 @@ import com.rudari.isa.models.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 
-@Entity
+@Entity(name = "registered_user")
 public class User extends BaseEntity {
     @Column
     private String name;

@@ -12,7 +12,8 @@ public class EnrolledStudent extends BaseEntity {
     @Column
     private String indexNumber;
 
-    @OneToOne(mappedBy = "enrolledStudent")
+    @OneToOne
+    @JoinColumn (name = "student")
     private Student student;
 
     @OneToMany(mappedBy = "enrolledStudent")
