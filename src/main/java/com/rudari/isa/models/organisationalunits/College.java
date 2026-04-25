@@ -1,10 +1,7 @@
 package com.rudari.isa.models.organisationalunits;
 
 import com.rudari.isa.models.BaseEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 
 import java.util.List;
 
@@ -18,5 +15,8 @@ public class College extends BaseEntity {
 
     @OneToMany(mappedBy = "college")
     private List<StudyProgram> studyPrograms;
+
+    @ManyToOne(optional = false)
+    private University university;
 
 }
