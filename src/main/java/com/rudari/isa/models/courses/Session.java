@@ -22,5 +22,7 @@ public class Session extends BaseEntity {
     private List<Duty> teachersOnDuty;
 
     @ManyToOne(optional = false)
+    private RealizedSubject realizedSubject;
+    @ManyToOne(optional = false)
     private SessionType sessionType;
 }

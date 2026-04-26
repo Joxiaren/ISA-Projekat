@@ -16,9 +16,13 @@ public class RealizedSubject extends BaseEntity {
     private SchoolYear schoolYear;
 
     @OneToMany(mappedBy = "realizedSubject")
+    private List<Session> sessions;
+    @OneToMany(mappedBy = "realizedSubject")
     private List<Material> materials;
     @OneToMany(mappedBy = "realizedSubject")
     private List<Duty> duties;
+    @OneToMany(mappedBy = "realizedSubject")
+    private List<SubjectAttendance> subjectAttendances;
     @OneToMany(mappedBy = "realizedSubject")
     private List<Evaluation> evaluations;
 }
