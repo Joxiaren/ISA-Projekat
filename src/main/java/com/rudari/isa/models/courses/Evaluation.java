@@ -16,7 +16,7 @@ public class Evaluation extends BaseEntity {
     @Column
     private LocalDateTime end;
     @Column
-    private Integer points;
+    private Double points;
 
     @OneToMany(mappedBy = "evaluation")
     private List<EvaluationAttempt> evaluationAttempts;

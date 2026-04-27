@@ -16,7 +16,7 @@ public class Subject extends BaseEntity {
     @Column
     private Integer ESPB;
     @Column
-    private boolean required;
+    private Boolean required;
     @Column
     private Integer numberOfLectures;
     @Column

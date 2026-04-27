@@ -1,10 +1,9 @@
 package com.rudari.isa.models.organisationalunits;
 
 import com.rudari.isa.models.BaseEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class StudyProgram extends BaseEntity {
@@ -13,6 +12,9 @@ public class StudyProgram extends BaseEntity {
 
     @OneToOne
     private AdministrativeDuty programManager;
+
+    @OneToMany(mappedBy = "studyProgram")
+    private List<StudyYear> studyYear;
 
     @ManyToOne(optional = false)
     private College college;
