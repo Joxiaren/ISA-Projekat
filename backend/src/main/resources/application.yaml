@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: ${APP_NAME:Starter}
+  config:
+    import: "optional:file:.env[.properties]"
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3367/music}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:root}
+  jackson:
+    mapper:
+      sort-properties-alphabetically: false
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        dialect: ${DB_DIALECT:org.hibernate.dialect.MySQLDialect}
+server:
+    port: ${PORT:8080}
