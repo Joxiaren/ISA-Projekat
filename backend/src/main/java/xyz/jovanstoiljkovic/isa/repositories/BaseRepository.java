@@ -1,4 +1,4 @@
-package xyz.jovanstoiljkovic.isa.repoositories;
+package xyz.jovanstoiljkovic.isa.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.NoRepositoryBean;

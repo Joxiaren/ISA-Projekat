@@ -1,0 +1,1 @@
+package xyz.jovanstoiljkovic.isa.services;import org.springframework.data.repository.CrudRepository;import org.springframework.stereotype.Service;import xyz.jovanstoiljkovic.isa.models.Tag;@Servicepublic class TagService extends BaseService<Tag>{    public TagService(CrudRepository<Tag, Long> repo) {        super(repo);    }}

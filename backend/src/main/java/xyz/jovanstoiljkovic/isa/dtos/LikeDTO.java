@@ -1,0 +1,1 @@
+package xyz.jovanstoiljkovic.isa.dtos;import xyz.jovanstoiljkovic.isa.models.Like;public class LikeDTO extends BaseDTO<Like>{}

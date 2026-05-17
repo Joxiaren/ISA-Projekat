@@ -1,0 +1,1 @@
+package xyz.jovanstoiljkovic.isa.dtos;import xyz.jovanstoiljkovic.isa.models.Song;public class SongDTO extends BaseDTO<Song>{}

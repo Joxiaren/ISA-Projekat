@@ -1,0 +1,1 @@
+package xyz.jovanstoiljkovic.isa.mappers;import org.mapstruct.Mapper;import org.springframework.stereotype.Component;import xyz.jovanstoiljkovic.isa.dtos.LikeDTO;import xyz.jovanstoiljkovic.isa.models.Like;@Component@Mapper(componentModel = "spring")public abstract class LikeMapper extends BaseMapper<Like, LikeDTO, LikeDTO>{}

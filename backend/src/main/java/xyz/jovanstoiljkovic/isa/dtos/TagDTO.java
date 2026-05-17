@@ -1,0 +1,1 @@
+package xyz.jovanstoiljkovic.isa.dtos;import xyz.jovanstoiljkovic.isa.models.Tag;public class TagDTO extends BaseDTO<Tag>{}

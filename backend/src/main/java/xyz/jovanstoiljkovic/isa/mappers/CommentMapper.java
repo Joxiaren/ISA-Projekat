@@ -1,0 +1,1 @@
+package xyz.jovanstoiljkovic.isa.mappers;import org.mapstruct.Mapper;import org.springframework.stereotype.Component;import xyz.jovanstoiljkovic.isa.dtos.CommentDTO;import xyz.jovanstoiljkovic.isa.models.Comment;@Component@Mapper(componentModel = "spring")public abstract class CommentMapper extends BaseMapper<Comment, CommentDTO, CommentDTO>{}

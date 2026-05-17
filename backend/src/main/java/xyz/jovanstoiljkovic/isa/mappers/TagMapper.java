@@ -1,0 +1,1 @@
+package xyz.jovanstoiljkovic.isa.mappers;import org.mapstruct.Mapper;import org.springframework.stereotype.Component;import xyz.jovanstoiljkovic.isa.dtos.TagDTO;import xyz.jovanstoiljkovic.isa.models.Tag;@Component@Mapper(componentModel = "spring")public abstract class TagMapper extends BaseMapper<Tag, TagDTO, TagDTO>{}

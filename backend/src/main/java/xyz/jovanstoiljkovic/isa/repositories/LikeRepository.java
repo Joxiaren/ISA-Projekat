@@ -1,0 +1,1 @@
+package xyz.jovanstoiljkovic.isa.repositories;import org.springframework.stereotype.Repository;import xyz.jovanstoiljkovic.isa.models.Like;@Repositorypublic interface LikeRepository extends BaseRepository<Like, Long>{}

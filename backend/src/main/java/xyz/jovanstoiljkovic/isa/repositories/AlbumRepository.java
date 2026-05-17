@@ -1,0 +1,1 @@
+package xyz.jovanstoiljkovic.isa.repositories;import org.springframework.stereotype.Repository;import xyz.jovanstoiljkovic.isa.models.Album;@Repositorypublic interface AlbumRepository extends BaseRepository<Album, Long>{}

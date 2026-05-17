@@ -1,0 +1,1 @@
+package xyz.jovanstoiljkovic.isa.services;import org.springframework.data.repository.CrudRepository;import org.springframework.stereotype.Service;import xyz.jovanstoiljkovic.isa.models.Comment;@Servicepublic class CommentService extends BaseService<Comment>{    public CommentService(CrudRepository<Comment, Long> repo) {        super(repo);    }}

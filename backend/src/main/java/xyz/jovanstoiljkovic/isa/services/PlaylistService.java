@@ -1,0 +1,1 @@
+package xyz.jovanstoiljkovic.isa.services;import org.springframework.data.repository.CrudRepository;import org.springframework.stereotype.Service;import xyz.jovanstoiljkovic.isa.models.Playlist;@Servicepublic class PlaylistService extends BaseService<Playlist>{    public PlaylistService(CrudRepository<Playlist, Long> repo) {        super(repo);    }}

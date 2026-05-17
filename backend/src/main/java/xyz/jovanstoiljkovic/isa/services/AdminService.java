@@ -1,0 +1,1 @@
+package xyz.jovanstoiljkovic.isa.services;import org.springframework.data.repository.CrudRepository;import org.springframework.stereotype.Service;import xyz.jovanstoiljkovic.isa.models.Admin;@Servicepublic class AdminService extends BaseService<Admin>{    public AdminService(CrudRepository<Admin, Long> repo) {        super(repo);    }}

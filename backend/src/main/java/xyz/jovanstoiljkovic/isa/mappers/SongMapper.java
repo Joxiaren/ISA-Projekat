@@ -1,0 +1,1 @@
+package xyz.jovanstoiljkovic.isa.mappers;import org.mapstruct.Mapper;import org.springframework.stereotype.Component;import xyz.jovanstoiljkovic.isa.dtos.SongDTO;import xyz.jovanstoiljkovic.isa.models.Song;@Component@Mapper(componentModel = "spring")public abstract class SongMapper extends BaseMapper<Song, SongDTO, SongDTO>{}

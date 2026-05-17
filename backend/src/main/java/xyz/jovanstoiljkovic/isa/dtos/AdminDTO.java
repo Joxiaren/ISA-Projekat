@@ -1,0 +1,1 @@
+package xyz.jovanstoiljkovic.isa.dtos;import xyz.jovanstoiljkovic.isa.models.Admin;public class AdminDTO extends BaseDTO<Admin>{}

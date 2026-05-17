@@ -1,0 +1,1 @@
+package xyz.jovanstoiljkovic.isa.services;import org.springframework.data.repository.CrudRepository;import org.springframework.stereotype.Service;import xyz.jovanstoiljkovic.isa.models.Like;@Servicepublic class LikeService extends BaseService<Like>{    public LikeService(CrudRepository<Like, Long> repo) {        super(repo);    }}

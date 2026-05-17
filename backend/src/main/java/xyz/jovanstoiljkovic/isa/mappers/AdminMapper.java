@@ -1,0 +1,1 @@
+package xyz.jovanstoiljkovic.isa.mappers;import org.mapstruct.Mapper;import org.springframework.stereotype.Component;import xyz.jovanstoiljkovic.isa.dtos.AdminDTO;import xyz.jovanstoiljkovic.isa.models.Admin;@Component@Mapper(componentModel = "spring")public abstract class AdminMapper extends BaseMapper<Admin, AdminDTO, AdminDTO>{}

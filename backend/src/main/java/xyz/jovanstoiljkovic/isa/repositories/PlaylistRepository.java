@@ -1,0 +1,1 @@
+package xyz.jovanstoiljkovic.isa.repositories;import org.springframework.stereotype.Repository;import xyz.jovanstoiljkovic.isa.models.Playlist;@Repositorypublic interface PlaylistRepository extends BaseRepository<Playlist, Long>{}

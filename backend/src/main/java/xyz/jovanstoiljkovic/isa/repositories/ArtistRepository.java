@@ -1,0 +1,1 @@
+package xyz.jovanstoiljkovic.isa.repositories;import org.springframework.stereotype.Repository;import xyz.jovanstoiljkovic.isa.models.Artist;@Repositorypublic interface ArtistRepository extends BaseRepository<Artist, Long>{}

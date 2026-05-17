@@ -1,0 +1,1 @@
+package xyz.jovanstoiljkovic.isa.mappers;import org.mapstruct.Mapper;import org.springframework.stereotype.Component;import xyz.jovanstoiljkovic.isa.dtos.AlbumDTO;import xyz.jovanstoiljkovic.isa.models.Album;@Component@Mapper(componentModel = "spring")public abstract class AlbumMapper extends BaseMapper<Album, AlbumDTO, AlbumDTO>{}

@@ -1,0 +1,1 @@
+package xyz.jovanstoiljkovic.isa.dtos;import xyz.jovanstoiljkovic.isa.models.User;public class UserDTO extends BaseDTO<User>{}
