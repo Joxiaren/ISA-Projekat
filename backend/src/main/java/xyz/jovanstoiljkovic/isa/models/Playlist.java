@@ -8,19 +8,24 @@ import jakarta.persistence.OneToMany;
 import java.util.List;
 
 @Entity
-public class Song extends BaseEntity{
+public class Playlist extends BaseEntity{
     @Column
-    private String url;
+    private Visibility visibility;
 
-    @ManyToOne(optional = true)
-    private Album album;
     @ManyToOne(optional = false)
-    private Artist artist;
+    private User user;
 
-    @OneToMany()
+    @OneToMany
+    private List<Song> songs;
+    @OneToMany
     private List<Tag> tags;
-    @OneToMany()
+    @OneToMany
     private List<Like> likes;
-    @OneToMany()
-    private List<Comment> comments;
+    @OneToMany
+    private List<Comment> comment;
+}
+
+enum Visibility{
+    PUBLIC,
+    PRIVATE
 }

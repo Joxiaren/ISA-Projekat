@@ -8,19 +8,19 @@ import jakarta.persistence.OneToMany;
 import java.util.List;
 
 @Entity
-public class Song extends BaseEntity{
+public class Album extends BaseEntity{
     @Column
-    private String url;
+    private String name;
 
-    @ManyToOne(optional = true)
-    private Album album;
     @ManyToOne(optional = false)
     private Artist artist;
 
-    @OneToMany()
+    @OneToMany(mappedBy = "album")
+    private List<Song> songs;
+    @OneToMany
     private List<Tag> tags;
-    @OneToMany()
+    @OneToMany
     private List<Like> likes;
-    @OneToMany()
+    @OneToMany
     private List<Comment> comments;
 }
