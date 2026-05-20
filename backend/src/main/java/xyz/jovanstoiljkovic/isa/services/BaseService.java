@@ -10,7 +10,7 @@ public abstract class BaseService<T extends BaseEntity> {
 
 	CrudRepository<T, Long> repo;
 
-  public BaseService(CrudRepository<T, Long> repo) {
+  	public BaseService(CrudRepository<T, Long> repo) {
     this.repo = repo;
   }
 	public Iterable<T> findAll() {

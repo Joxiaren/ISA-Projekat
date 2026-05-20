@@ -1,1 +1,1 @@
-package xyz.jovanstoiljkovic.isa.repositories;import org.springframework.stereotype.Repository;import xyz.jovanstoiljkovic.isa.models.User;@Repositorypublic interface UserRepository extends BaseRepository<User, Long>{}
+package xyz.jovanstoiljkovic.isa.repositories;import org.springframework.stereotype.Repository;import xyz.jovanstoiljkovic.isa.models.User;@Repositorypublic interface UserRepository extends BaseRepository<User, Long>{    User findByUsername(String username);}
