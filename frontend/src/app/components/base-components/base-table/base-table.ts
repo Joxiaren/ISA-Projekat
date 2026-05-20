@@ -1,0 +1,145 @@
+import { Component, computed, EventEmitter, inject, Input, Output, Signal, signal } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
+import { BaseModel } from "model/base-model";
+
+@Component({
+  selector: 'app-base-table',
+  imports: [],
+  template: ""
+})
+export class BaseTable<Type extends BaseModel> {
+  @Input()
+  items: Signal<Type[]> = signal<Type[]>([]);
+
+  @Output()
+  deleteEmit = new EventEmitter<number>();
+
+  @Output()
+  editEmit = new EventEmitter<number>();
+
+  router = inject(Router)
+  activatedRoute = inject(ActivatedRoute);
+
+  itemsShow: Signal<Type[]> = computed(() => {
+    let newItems = this.items();
+
+    let filteringFn = this.filteringFns().map((ff) => ff.fn);
+    newItems = newItems.filter((item) => {
+      for (let fn of filteringFn) {
+        if (!fn(item)) return false;
+      }
+      return true;
+    });
+
+    let sortingFn = this.sortingFns().map((sf) => sf.fn);
+    newItems = newItems.sort((a, b) => {
+      for (let fn of sortingFn) {
+        let sortingResult = fn(a, b);
+        if (sortingResult != 0) return sortingResult;
+      }
+      return 0;
+    });
+
+    return newItems;
+  });
+
+  filteringFns = signal<FilterFnContainer<Type>[]>([]);
+  sortingFns = signal<SortFnContainer<Type>[]>([]);
+
+  setFilter(name: string, fn: ((a: Type) => boolean) | null): void {
+    let indexFn = this.filteringFns().findIndex((ff) => ff.name === name);
+    if (fn !== null) {
+      if (indexFn === -1) {
+        this.filteringFns.update((ffs) => [...ffs, { name, fn }]);
+      } else {
+        this.filteringFns.update((ffs) =>
+          ffs.map((ff, index) => {
+            if (index === indexFn) return { name, fn };
+            return ff;
+          })
+        );
+      }
+    } else {
+      if (indexFn === -1) return;
+
+      this.filteringFns.update((ffs) => ffs.filter((ff, index) => index !== indexFn));
+    }
+  }
+
+  compareGen(field: string) {
+    return (desc: boolean) => {
+      return (a: any, b: any) => {
+        return (a[field] < b[field] ? 1 : a[field] > b[field] ? -1 : 0) * (desc ? -1 : 1);
+      };
+    };
+  }
+
+  setSortFn(indexFn: number, name: string, type: boolean) {
+    if (indexFn === -1) {
+      this.sortingFns.update((sfs) => [...sfs, { name, state: type ? -1 : 1, fn: this.compareGen(name)(type) }]);
+    } else {
+      this.sortingFns.update((sfs) =>
+        sfs.map((sf, index) => {
+          if (index === indexFn) return { name, state: type ? -1 : 1, fn: this.compareGen(name)(type) };
+          return sf;
+        })
+      );
+    }
+  }
+
+  toggleSort(name: string) {
+    let indexFn = this.sortingFns().findIndex((sf) => sf.name == name);
+
+    if (indexFn === -1) this.setSort(name, -1);
+    else if (this.sortingFns()[indexFn].state === -1) this.setSort(name, 1);
+    else this.setSort(name, 0);
+  }
+
+  setSort(name: string, type: number): void {
+    let indexFn = this.sortingFns().findIndex((sf) => sf.name === name);
+
+    switch (type) {
+      case 1: {
+        this.setSortFn(indexFn, name, false);
+        break;
+      }
+      case -1: {
+        this.setSortFn(indexFn, name, true);
+        break;
+      }
+      default: {
+        if (indexFn === -1) break;
+
+        this.sortingFns.update((sfs) => sfs.filter((sf, index) => index !== indexFn));
+
+        break;
+      }
+    }
+  }
+
+  findSortDirection(name: string): boolean | null {
+    let result = null;
+    let sortingFn = this.sortingFns().filter((sf) => sf.name === name);
+    if (sortingFn.length > 0) result = sortingFn[0].state === 1 ? false : true;
+    return result;
+  }
+  editEvent(index: number) {
+    this.editEmit.emit(index);
+  }
+  deleteEvent(index: number) {
+    this.deleteEmit.emit(index);
+  }
+  detailView(index: number){
+    this.router.navigate([`${index}`], {relativeTo: this.activatedRoute});
+  }
+}
+
+interface SortFnContainer<Type> {
+  name: string;
+  state: number;
+  fn: (a: Type, b: Type) => number;
+}
+interface FilterFnContainer<Type> {
+  name: string;
+  fn: (a: Type) => boolean;
+}
