@@ -1,0 +1,11 @@
+<p>main-page works!</p>
+
+@if(song() == null){
+    No song
+}
+@else{
+    {{song()!.name}}
+    <audio controls>
+        <source src={{song()!.url}}>
+    </audio>
+}
