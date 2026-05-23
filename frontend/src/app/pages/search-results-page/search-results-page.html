@@ -1,0 +1,12 @@
+
+@if(searchResults().length > 0){
+    @for(result of searchResults(); track result.id ){
+        <div class="search-result" (click)="playSong(result.id)">
+            <div>{{result.name}}</div>
+            <div>{{result.artist.name}}</div>
+        </div>
+    }
+}
+@else{
+    No results...
+}

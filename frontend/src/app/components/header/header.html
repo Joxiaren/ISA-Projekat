@@ -1,0 +1,13 @@
+<a class="selected" [routerLink]="['']">Main</a>
+
+<app-search-bar class="right" />
+
+@if(username() != null){
+    <button class="right" (click)="logout()">Logout</button>
+    <div>
+        Welcome: {{username()}}
+    </div>
+}
+@else{
+    <a class="right" [routerLink]="['login']">Login</a>
+}

@@ -1,6 +1,5 @@
 import { inject, Injectable, WritableSignal } from '@angular/core';
 import { BaseControl } from 'app/controls/base-control';
-import { BaseService } from 'app/services/base-service';
 import { SongService } from 'app/services/song-service';
 import { Song } from 'model/song';
 
@@ -8,7 +7,7 @@ import { Song } from 'model/song';
   providedIn: 'root',
 })
 export class SongControl extends BaseControl<Song>{
-  override service: BaseService<Song> = inject(SongService);
+  override service: SongService = inject(SongService);
   override controlName: string = "Song";
 
   override getAllItems(): void {
@@ -21,6 +20,13 @@ export class SongControl extends BaseControl<Song>{
     this.service?.get(index).subscribe((data) => {
       data.url = this.service.path + data.url;
       s.set(data);
-    })  
+    }); 
+  }
+
+  search(searchString: string, s: WritableSignal<Song[]>): void{
+    this.service?.search(searchString).subscribe((data) => {
+      data.forEach(d => d.url = this.service.path + d.url);
+      s.set(data);
+    });
   }
 }

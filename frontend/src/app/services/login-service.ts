@@ -27,7 +27,7 @@ export class LoginService {
   }
 
   login(user: any){
-    return this.http.post("http://localhost:3000/login", {username: user.username, password: user.password}).pipe(
+    return this.http.post("http://localhost:8080/auth/login", {username: user.username, password: user.password}).pipe(
       tap((r:any) => {
         this.token.set(r["token"]);
         localStorage.setItem("token", this.token())
