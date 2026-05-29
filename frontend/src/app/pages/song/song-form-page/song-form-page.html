@@ -1,0 +1,8 @@
+<button (click)="cancel()">Cancel</button>
+<app-song-form
+    [editItem]="songControl.itemEdit()"
+    [artists]="songControl.artistItems"
+    (addEmit)="songControl.addItem($event)"
+    (editEmit)="songControl.editItem($event)"
+    (submitEmit)="submitEvent($event)"
+></app-song-form>

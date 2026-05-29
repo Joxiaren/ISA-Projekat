@@ -1,12 +1,15 @@
-<a class="selected" [routerLink]="['']">Main</a>
+<a [routerLink]="['']">Main</a>
 
+@if(adminAccess()){
+    <a [routerLink]="['songs']">Song</a>
+}
 <app-search-bar class="right" />
 
 @if(username() != null){
-    <button class="right" (click)="logout()">Logout</button>
-    <div>
+    <a (click)="logout()">Logout</a>
+    <!-- <div>
         Welcome: {{username()}}
-    </div>
+    </div> -->
 }
 @else{
     <a class="right" [routerLink]="['login']">Login</a>

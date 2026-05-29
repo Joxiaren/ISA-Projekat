@@ -30,6 +30,7 @@ export abstract class BaseForm<Type extends BaseModel> implements OnChanges {
   addEvent() {
     this.formToItem();
 
+    console.log(this.itemFormValue);
     if (this.itemFormValue == undefined) {
       this.submitEmit.emit(false);
       return;

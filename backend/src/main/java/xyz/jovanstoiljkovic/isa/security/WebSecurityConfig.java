@@ -8,6 +8,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -30,13 +31,20 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
         return httpSecurity
+                .cors(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request -> request
+                        .requestMatchers(HttpMethod.GET, "/actuator/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/swagger-ui/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/v3/**").permitAll()
 
                         .requestMatchers("/auth/register").anonymous()
                         .requestMatchers("/auth/**").permitAll()
+
+                        .requestMatchers( HttpMethod.GET,"/songs/**").permitAll()
+                        .requestMatchers( HttpMethod.GET,"/api/song/**").permitAll()
+
+                        .requestMatchers( HttpMethod.GET, "/api/artist/**").permitAll()
 
                         .anyRequest().hasAnyAuthority("ADMIN"))
                 .addFilterBefore(jwtFilter, LogoutFilter.class)

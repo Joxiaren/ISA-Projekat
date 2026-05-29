@@ -18,6 +18,8 @@ export class Header {
     return this.loginService.payload()['sub'];
   });
 
+  adminAccess : Signal<boolean> = computed(() => this.loginService.validateAuthority(['ADMIN'], true));
+
   logout(){
     this.loginService.logout();
     this.router.navigate(['login']);

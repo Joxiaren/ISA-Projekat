@@ -13,7 +13,7 @@ export abstract class BaseService<Type extends BaseModel> {
   get(id: number) {
     return this.http.get<Type>(`${this.path}${this.resource}/${id}`)
   }
-  create(item: Type) {
+  async create(item: Type) {
     return this.http.post<Type>(`${this.path}${this.resource}`, item);
   }
   update(id: number, item: Type) {

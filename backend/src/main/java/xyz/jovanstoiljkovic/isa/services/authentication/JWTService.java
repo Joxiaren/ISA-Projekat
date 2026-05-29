@@ -5,6 +5,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.security.SignatureException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,10 @@ import java.util.function.Function;
 
 @Service
 public class JWTService {
+
+    @Autowired
+    private ISAUserDetailsService userDetailsService;
+
     final private String secretKey;
     public JWTService() {
         KeyGenerator keyGen;
@@ -34,7 +39,9 @@ public class JWTService {
 
     public String generateToken(String username){
         Map<String, Object> claims = new HashMap<>();
+        UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
+        claims.put("auths", userDetails.getAuthorities());
         return Jwts.builder()
                 .claims()
                 .add(claims)

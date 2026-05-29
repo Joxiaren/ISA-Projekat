@@ -1,0 +1,27 @@
+<form [formGroup]="form" (submit)="addEvent()">
+    <div>
+        <label for="name"> Song Name: </label>
+        <input type="text" formControlName="name" name="name" />
+    </div>
+    <div>
+        <label for="artist"> Artist: </label>
+        <select [compareWith]="compare" name="artist" formControlName="artist">
+            @for(artist of artists(); track $index){
+                <option [ngValue]="artist">{{artist.name}}</option>
+            }
+        </select>
+    </div>
+    <div>
+        <label for="songFile">Song File: </label>
+        <input type="file" accept=".mp3" formControlName="songFile" name="songFile" />
+    </div>
+    <div>
+        <button>
+            @if (mode() === "add") {
+            Add
+            } @else {
+            Edit
+            }
+        </button>
+    </div>
+</form>

@@ -25,9 +25,9 @@ export abstract class BaseControl<Type extends BaseModel> {
     })  
   }
   addItem(item: Type) {
-    this.service?.create(item).subscribe(() => {
+    this.service?.create(item).then(res => res.subscribe(() => {
       this.getAllItems();
-    });
+    }));
   }
   setEditItem(id: number){
     let item = this.items().filter(i => i.id == id)[0];

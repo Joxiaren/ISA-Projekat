@@ -1,7 +1,9 @@
-import { inject, Injectable, WritableSignal } from '@angular/core';
+import { computed, inject, Injectable, signal, WritableSignal } from '@angular/core';
+import { ArtistControl } from 'app/controls/artist-control';
 import { BaseControl } from 'app/controls/base-control';
 import { SongService } from 'app/services/song-service';
 import { Song } from 'model/song';
+import { SongRequest } from 'model/song-request';
 
 @Injectable({
   providedIn: 'root',
@@ -9,6 +11,12 @@ import { Song } from 'model/song';
 export class SongControl extends BaseControl<Song>{
   override service: SongService = inject(SongService);
   override controlName: string = "Song";
+
+  override itemEdit = signal<SongRequest | null>(null);
+
+  artistControl = inject(ArtistControl);
+
+  artistItems = computed(() => this.artistControl.items());
 
   override getAllItems(): void {
     this.service?.getAll().subscribe((data) => {
@@ -23,10 +31,22 @@ export class SongControl extends BaseControl<Song>{
     }); 
   }
 
+  override setEditItem(id: number): void {
+    let item = this.items().filter(i => i.id == id)[0];
+    let songRequest : SongRequest = {...item, "songFile": null};
+    this.itemEdit.set(songRequest);
+    this.itemEditEmit.emit(item.id);
+  }
+
   search(searchString: string, s: WritableSignal<Song[]>): void{
     this.service?.search(searchString).subscribe((data) => {
       data.forEach(d => d.url = this.service.path + d.url);
       s.set(data);
     });
+  }
+
+  dataRefresh(){
+    this.getAllItems();
+    this.artistControl.getAllItems();
   }
 }

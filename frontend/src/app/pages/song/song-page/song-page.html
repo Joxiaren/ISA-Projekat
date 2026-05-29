@@ -1,0 +1,7 @@
+<h2>Songs</h2>
+<app-song-table
+    [items]="songControl.items"
+    (deleteEmit)="songControl.deleteItem($event)"
+    (editEmit)="songControl.setEditItem($event)"
+></app-song-table>
+<button (click)="add()">Add Song</button>

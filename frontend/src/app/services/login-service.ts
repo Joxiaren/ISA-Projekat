@@ -39,6 +39,10 @@ export class LoginService {
     if(this.payload() == undefined) return null;
     return this.payload()["roles"];
   }
+  getAuthorities(){
+    if(this.payload() == undefined) return null;
+    return this.payload()['auths'].map((auth: any) => auth['authority']);
+  }
 
   getUsername(){
     if(this.payload() == undefined) return null;
@@ -71,10 +75,24 @@ export class LoginService {
 
       if(all && result.size === roles.size) return true;
       else if( !all && result.size > 0) return true; 
-
-      return true;
     }
     
+    return false;
+  }
+  validateAuthority(authorities: any, all: boolean){
+    if(!this.validateToken()) return false;
+    
+    let userAuthorities = this.getAuthorities();
+    if(userAuthorities != null){
+      let authoritiestSet = new Set(authorities);
+      let userAuthoritiesSet = new Set(userAuthorities);
+
+      let result = authoritiestSet.intersection(userAuthoritiesSet);
+
+      if(all && result.size === authorities.length) return true;
+      else if (!all && result.size > 0) return true;
+    }
+
     return false;
   }
 
