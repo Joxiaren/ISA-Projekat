@@ -9,12 +9,5 @@ import { Song } from 'model/song';
   styleUrl: './main-page.css',
 })
 export class MainPage {
-  songControl = inject(SongControl);
-
-  song = signal<Song | null>(null);
-
-  constructor(){
-    this.songControl.getItem(2, this.song);
-  }
 
 }

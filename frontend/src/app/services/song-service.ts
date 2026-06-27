@@ -24,7 +24,7 @@ export class SongService extends BaseService<Song>{
     
     console.log(formData);
 
-    return this.http.post<Song>(`${this.path}${this.resource}`, formData);
+    return this.http.post<Song>(`${this.path}${this.resource}/add`, formData);
   }
 
   search(searchString: string){

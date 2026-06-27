@@ -1,4 +1,5 @@
 import { Component, Input, Signal, signal } from '@angular/core';
+import { resetConsumerBeforeComputation } from '@angular/core/primitives/signals';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { BaseForm } from 'app/components/base-components/base-form/base-form';
 import { Artist } from 'model/artist';
@@ -16,9 +17,21 @@ export class SongForm extends BaseForm<SongRequest>{
     name: new FormControl(),
     url: new FormControl(),
     artist: new FormControl(),
-    songFile: new FormControl(null, {nonNullable: false})
+    songFile: new FormControl()
   })
 
   @Input()
   artists: Signal<Artist[]> = signal([]);
+
+  override formToItem(): void {
+    super.formToItem();
+
+    let fileInput = document.querySelector('input[name="songFile"]');
+    if(fileInput === null || fileInput == undefined) return;
+    if((fileInput as HTMLInputElement).files === null) return;
+    console.log((fileInput as HTMLInputElement).files![0])
+    
+    
+    this.itemFormValue!.songFile = (fileInput as HTMLInputElement).files![0];
+  }
 }
