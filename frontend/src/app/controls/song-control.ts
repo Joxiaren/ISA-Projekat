@@ -30,12 +30,22 @@ export class SongControl extends BaseControl<Song>{
       s.set(data);
     }); 
   }
+  getRequestItem(index: number, s: WritableSignal<SongRequest | null>): void{
+    this.service?.get(index).subscribe((data) => {
+      data.url = this.service.path + data.url;
+
+      s.set({...data, "songFile": null});
+    })
+  }
 
   override setEditItem(id: number): void {
     let item = this.items().filter(i => i.id == id)[0];
     let songRequest : SongRequest = {...item, "songFile": null};
+    
     this.itemEdit.set(songRequest);
+    console.log("set here");
     this.itemEditEmit.emit(item.id);
+    console.log("emit here");
   }
 
   search(searchString: string, s: WritableSignal<Song[]>): void{

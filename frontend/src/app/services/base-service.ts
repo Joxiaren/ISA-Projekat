@@ -16,7 +16,7 @@ export abstract class BaseService<Type extends BaseModel> {
   async create(item: Type) {
     return this.http.post<Type>(`${this.path}${this.resource}`, item);
   }
-  update(id: number, item: Type) {
+  async update(id: number, item: Type) {
     return this.http.put<Type>(`${this.path}${this.resource}/${id}`, item);
   }
   updatePatch(id: number, item: any){

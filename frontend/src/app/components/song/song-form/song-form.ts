@@ -17,6 +17,8 @@ export class SongForm extends BaseForm<SongRequest>{
     name: new FormControl(),
     url: new FormControl(),
     artist: new FormControl(),
+    album: new FormControl(),
+    likes: new FormControl(),
     songFile: new FormControl()
   })
 

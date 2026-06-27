@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { authoritiesGuard } from 'app/guards/authorities-guard';
+import { AdminPage } from 'app/pages/admin-page/admin-page';
 import { LoginPage } from 'app/pages/login-page/login-page';
 import { MainPage } from 'app/pages/main-page/main-page';
 import { SearchResultsPage } from 'app/pages/search-results-page/search-results-page';
@@ -28,26 +29,34 @@ export const routes: Routes = [
     },
 
     //protected routes
+
     {
-        path: "songs",
+        path: "admin",
+        component: AdminPage,
+        canActivate: [authoritiesGuard],
+        data: {authorities: ['ADMIN']}
+    },
+
+    {
+        path: "admin/songs",
         component: SongPage,
         canActivate: [authoritiesGuard],
         data: {authorities: ['ADMIN']}
     },
     {
-        path: "songs/add",
+        path: "admin/songs/add",
         component: SongFormPage,
         canActivate: [authoritiesGuard],
         data: {authorities: ['ADMIN']}
     },
     {
-        path: "songs/:id/edit",
+        path: "admin/songs/:id/edit",
         component: SongFormPage,
         canActivate: [authoritiesGuard],
         data: {authorities: ['ADMIN']}
     },
     {
-        path: "songs/:id",
+        path: "admin/songs/:id",
         component: SongDetailViewPage,
         canActivate: [authoritiesGuard],
         data: {authorities: ['ADMIN']}

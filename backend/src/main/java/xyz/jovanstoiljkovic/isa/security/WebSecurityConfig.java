@@ -45,8 +45,9 @@ public class WebSecurityConfig {
                         .requestMatchers( HttpMethod.GET,"/api/song/**").permitAll()
 
                         .requestMatchers( HttpMethod.GET, "/api/artist/**").permitAll()
-
-                        .anyRequest().hasAnyAuthority("ADMIN"))
+                        
+                        .anyRequest().hasAnyAuthority("ADMIN")
+                )
                 .addFilterBefore(jwtFilter, LogoutFilter.class)
                 .build();
     }

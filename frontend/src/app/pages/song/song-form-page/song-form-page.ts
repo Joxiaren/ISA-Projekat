@@ -1,8 +1,9 @@
 import { Location } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SongForm } from 'app/components/song/song-form/song-form';
 import { SongControl } from 'app/controls/song-control';
+import { SongRequest } from 'model/song-request';
 
 @Component({
   selector: 'app-song-form-page',
@@ -25,7 +26,7 @@ export class SongFormPage {
         return;
       }
 
-      this.songControl.getItem(params['id'], this.songControl.itemEdit);
+      this.songControl.getRequestItem(params['id'], this.songControl.itemEdit);
     });
   }
 

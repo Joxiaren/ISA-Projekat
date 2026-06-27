@@ -1,4 +1,4 @@
-import { Component, Directive, EventEmitter, Input, OnChanges, Output, signal, SimpleChanges } from "@angular/core";
+import { Component, EventEmitter, Input, OnChanges, Output, signal, SimpleChanges } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import { BaseModel } from "model/base-model";
 
@@ -47,6 +47,7 @@ export abstract class BaseForm<Type extends BaseModel> implements OnChanges {
   }
   
   ngOnChanges(changes: SimpleChanges): void {
+    console.log(this.editItem);
     if (changes["editItem"] == undefined) return;
     if (changes["editItem"].currentValue != changes["editItem"].previousValue) {
       if (this.editItem == undefined) {
