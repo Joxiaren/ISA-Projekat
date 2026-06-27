@@ -1,8 +1,22 @@
+.page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h2{
+    text-align: center;
+    margin-bottom: 16px;
+}
+
 a{
     all: unset;
     user-select: none;
+    
+    max-width: 300px;
+    padding: 16px;
 
-    padding: 6px;
+    font-size: 20px;
+
     transition: all 0.1s ease-in-out;
 }
 

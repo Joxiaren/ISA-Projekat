@@ -30,7 +30,6 @@ export abstract class BaseForm<Type extends BaseModel> implements OnChanges {
   addEvent() {
     this.formToItem();
 
-    console.log(this.itemFormValue);
     if (this.itemFormValue == undefined) {
       this.submitEmit.emit(false);
       return;
@@ -47,7 +46,6 @@ export abstract class BaseForm<Type extends BaseModel> implements OnChanges {
   }
   
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.editItem);
     if (changes["editItem"] == undefined) return;
     if (changes["editItem"].currentValue != changes["editItem"].previousValue) {
       if (this.editItem == undefined) {

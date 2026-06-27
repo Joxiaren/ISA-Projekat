@@ -22,10 +22,12 @@ public class Playlist extends BaseEntity{
     @OneToMany
     private List<Like> likes;
     @OneToMany
-    private List<Comment> comment;
+    private List<Comment> comments;
+
+    public enum Visibility{
+        PUBLIC,
+        PRIVATE
+    }
 }
 
-enum Visibility{
-    PUBLIC,
-    PRIVATE
-}
+

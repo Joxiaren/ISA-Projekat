@@ -1,1 +1,0 @@
-package xyz.jovanstoiljkovic.isa.dtos;import xyz.jovanstoiljkovic.isa.models.Comment;public class CommentDTO extends BaseDTO<Comment>{}

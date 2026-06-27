@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import xyz.jovanstoiljkovic.isa.dtos.RegisterDTO;
-import xyz.jovanstoiljkovic.isa.dtos.UserDTO;
+import xyz.jovanstoiljkovic.isa.dtos.user.UserDTO;
 import xyz.jovanstoiljkovic.isa.dtos.login.LoginRequestDTO;
 import xyz.jovanstoiljkovic.isa.dtos.login.LoginResponseDTO;
 import xyz.jovanstoiljkovic.isa.services.UserService;

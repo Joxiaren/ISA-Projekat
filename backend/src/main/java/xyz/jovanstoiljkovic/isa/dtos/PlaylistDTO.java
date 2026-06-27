@@ -1,1 +1,0 @@
-package xyz.jovanstoiljkovic.isa.dtos;import xyz.jovanstoiljkovic.isa.models.Playlist;public class PlaylistDTO extends BaseDTO<Playlist>{}

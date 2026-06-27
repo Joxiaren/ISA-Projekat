@@ -19,8 +19,6 @@ export class SongService extends BaseService<Song>{
       formData.append("songFile", new Blob([something]));
     }
     formData.append("item", new Blob([JSON.stringify(data)], { type: 'application/json'}));
-    
-    console.log(formData);
 
     return this.http.post<Song>(`${this.path}${this.resource}/add`, formData);
   }

@@ -30,8 +30,6 @@ export class SongForm extends BaseForm<SongRequest>{
     let fileInput = document.querySelector('input[name="songFile"]');
     if(fileInput === null || fileInput == undefined) return;
     if((fileInput as HTMLInputElement).files === null) return;
-    console.log((fileInput as HTMLInputElement).files![0])
-    
     
     this.itemFormValue!.songFile = (fileInput as HTMLInputElement).files![0];
   }

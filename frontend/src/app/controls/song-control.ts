@@ -43,9 +43,7 @@ export class SongControl extends BaseControl<Song>{
     let songRequest : SongRequest = {...item, "songFile": null};
     
     this.itemEdit.set(songRequest);
-    console.log("set here");
     this.itemEditEmit.emit(item.id);
-    console.log("emit here");
   }
 
   search(searchString: string, s: WritableSignal<Song[]>): void{
