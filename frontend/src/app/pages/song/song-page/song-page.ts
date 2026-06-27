@@ -23,7 +23,7 @@ export class SongPage {
   }
 
   dataRefresh(){
-    this.songControl.getAllItems();
+    this.songControl.dataRefresh();
   }
   add(){
     this.router.navigate(['add'], {relativeTo: this.activatedRoute});

@@ -52,4 +52,8 @@ export abstract class BaseControl<Type extends BaseModel> {
     });
     this.itemEdit.set(null);
   }
+
+  dataRefresh(){
+    this.getAllItems();
+  }
 }

@@ -1,0 +1,7 @@
+<h2>Artists</h2>
+<app-artist-table
+    [items]="artistControl.items"
+    (deleteEmit)="artistControl.deleteItem($event)"
+    (editEmit)="artistControl.setEditItem($event)"
+></app-artist-table>
+<button (click)="add()">Add Artist</button>

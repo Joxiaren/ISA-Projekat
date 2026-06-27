@@ -55,7 +55,7 @@ export class SongControl extends BaseControl<Song>{
     });
   }
 
-  dataRefresh(){
+  override dataRefresh(){
     this.getAllItems();
     this.artistControl.getAllItems();
   }

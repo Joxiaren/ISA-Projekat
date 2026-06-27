@@ -1,5 +1,4 @@
 import { Component, Input, Signal, signal } from '@angular/core';
-import { resetConsumerBeforeComputation } from '@angular/core/primitives/signals';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { BaseForm } from 'app/components/base-components/base-form/base-form';
 import { Artist } from 'model/artist';

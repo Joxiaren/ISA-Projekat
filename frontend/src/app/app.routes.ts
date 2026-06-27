@@ -1,6 +1,9 @@
 import { Routes } from '@angular/router';
 import { authoritiesGuard } from 'app/guards/authorities-guard';
 import { AdminPage } from 'app/pages/admin-page/admin-page';
+import { ArtistDetailViewPage } from 'app/pages/artist/artist-detail-view-page/artist-detail-view-page';
+import { ArtistFormPage } from 'app/pages/artist/artist-form-page/artist-form-page';
+import { ArtistPage } from 'app/pages/artist/artist-page/artist-page';
 import { LoginPage } from 'app/pages/login-page/login-page';
 import { MainPage } from 'app/pages/main-page/main-page';
 import { SearchResultsPage } from 'app/pages/search-results-page/search-results-page';
@@ -58,6 +61,31 @@ export const routes: Routes = [
     {
         path: "admin/songs/:id",
         component: SongDetailViewPage,
+        canActivate: [authoritiesGuard],
+        data: {authorities: ['ADMIN']}
+    },
+
+    {
+        path: "admin/artists",
+        component: ArtistPage,
+        canActivate: [authoritiesGuard],
+        data: {authorities: ['ADMIN']}
+    },
+    {
+        path: "admin/artists/add",
+        component: ArtistFormPage,
+        canActivate: [authoritiesGuard],
+        data: {authorities: ['ADMIN']}
+    },
+    {
+        path: "admin/artists/:id/edit",
+        component: ArtistFormPage,
+        canActivate: [authoritiesGuard],
+        data: {authorities: ['ADMIN']}
+    },
+    {
+        path: "admin/artists/:id",
+        component: ArtistDetailViewPage,
         canActivate: [authoritiesGuard],
         data: {authorities: ['ADMIN']}
     }

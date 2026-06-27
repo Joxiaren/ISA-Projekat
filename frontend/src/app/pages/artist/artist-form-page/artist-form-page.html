@@ -1,0 +1,7 @@
+<button (click)="cancel()">Cancel</button>
+<app-artist-form
+    [editItem]="artistControl.itemEdit()"
+    (addEmit)="artistControl.addItem($event)"
+    (editEmit)="artistControl.editItem($event)"
+    (submitEmit)="submitEvent($event)"
+></app-artist-form>

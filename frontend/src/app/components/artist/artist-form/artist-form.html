@@ -1,0 +1,15 @@
+<form [formGroup]="form" (submit)="addEvent()">
+    <div>
+        <label for="name"> Artist Name: </label>
+        <input type="text" formControlName="name" name="name" />
+    </div>
+    <div>
+        <button>
+            @if (mode() === "add") {
+            Add
+            } @else {
+            Edit
+            }
+        </button>
+    </div>
+</form>
