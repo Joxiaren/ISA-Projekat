@@ -12,6 +12,14 @@
         </select>
     </div>
     <div>
+        <label for="album"> Album: </label>
+        <select [compareWith]="compare" name="album" formControlName="album">
+            @for(album of albums(); track $index){
+                <option [ngValue]="album">{{album.name}}</option>
+            }
+        </select>
+    </div>
+    <div>
         <label for="songFile">Song File: </label>
         <input type="file" accept=".mp3" formControlName="songFile" name="songFile" />
     </div>

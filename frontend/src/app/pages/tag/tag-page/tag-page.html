@@ -1,0 +1,7 @@
+<h2>Tags</h2>
+<app-tag-table
+    [items]="tagControl.items"
+    (deleteEmit)="tagControl.deleteItem($event)"
+    (editEmit)="tagControl.setEditItem($event)"
+></app-tag-table>
+<button (click)="add()">Add Tag</button>

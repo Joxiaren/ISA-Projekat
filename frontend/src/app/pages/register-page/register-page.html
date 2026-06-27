@@ -1,0 +1,22 @@
+<div class="page">
+    <form [formGroup]="form" (submit)="register()">
+        <div>
+            <label for="username"> Username: </label>
+            <input type="text" formControlName="username" name="username" required/>
+        </div>
+        <div>
+            <label for="password"> Password: </label>
+            <input type="password" formControlName="password" name="password" required/>
+        </div>
+        <div>
+            <label for="confirmPassword"> Confirm Password: </label>
+            <input type="password" formControlName="confirmPassword" name="confirmPassword" required/>
+        </div>
+        @if(registerWarning() !== ""){
+            <div class="error">{{registerWarning()}}</div>
+        }
+        <div>
+            <button>Register</button>
+        </div>
+    </form>
+</div>

@@ -12,7 +12,7 @@ public class Album extends BaseEntity{
     @Column
     private String name;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = true)
     private Artist artist;
 
     @OneToMany(mappedBy = "album")

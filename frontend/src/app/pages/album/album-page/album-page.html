@@ -1,0 +1,7 @@
+<h2>Albums</h2>
+<app-album-table
+    [items]="albumControl.items"
+    (deleteEmit)="albumControl.deleteItem($event)"
+    (editEmit)="albumControl.setEditItem($event)"
+></app-album-table>
+<button (click)="add()">Add Album</button>

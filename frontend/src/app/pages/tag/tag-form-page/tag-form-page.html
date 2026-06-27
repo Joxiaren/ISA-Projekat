@@ -1,0 +1,7 @@
+<button (click)="cancel()">Cancel</button>
+<app-tag-form
+    [editItem]="tagControl.itemEdit()"
+    (addEmit)="tagControl.addItem($event)"
+    (editEmit)="tagControl.editItem($event)"
+    (submitEmit)="submitEvent($event)"
+></app-tag-form>

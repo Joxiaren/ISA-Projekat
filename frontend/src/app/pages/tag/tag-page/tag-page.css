@@ -1,0 +1,28 @@
+:host{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h2{
+    text-align: center;
+}
+
+button{
+    margin-top: 24px;
+    padding: 6px;
+    width: 100%;
+    max-width: 300px;
+    align-self: center;
+    background-color: var(--muted1-color);
+    border: 2px solid var(--muted1-color);
+    border-radius: 4px;
+    color: white;
+    transition: all 0.1s ease-in-out;
+}
+
+button:hover{
+    cursor: pointer;
+    background-color: var(--secondary-color);
+    color: black;
+}

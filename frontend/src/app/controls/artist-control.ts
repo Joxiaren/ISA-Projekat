@@ -9,5 +9,4 @@ import { Artist } from 'model/artist';
 export class ArtistControl extends BaseControl<Artist>{
   override service: ArtistService = inject(ArtistService);
   override controlName: string = "Artist";
-  
 }

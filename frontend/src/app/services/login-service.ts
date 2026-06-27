@@ -26,6 +26,10 @@ export class LoginService {
     }
   }
 
+  register(user: any) {
+    return this.http.post("http://localhost:8080/auth/register", {username: user.username, password: user.password});
+  }
+
   login(user: any){
     return this.http.post("http://localhost:8080/auth/login", {username: user.username, password: user.password}).pipe(
       tap((r:any) => {

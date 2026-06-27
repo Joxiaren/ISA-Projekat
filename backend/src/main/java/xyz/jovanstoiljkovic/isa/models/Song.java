@@ -16,7 +16,7 @@ public class Song extends BaseEntity{
 
     @ManyToOne(optional = true)
     private Album album;
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = true)
     private Artist artist;
 
     @OneToMany()

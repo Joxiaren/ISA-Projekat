@@ -1,0 +1,8 @@
+<button (click)="cancel()">Cancel</button>
+<app-album-form
+    [editItem]="albumControl.itemEdit()"   
+    [artists]="albumControl.artistItems"
+    (addEmit)="albumControl.addItem($event)"
+    (editEmit)="albumControl.editItem($event)"
+    (submitEmit)="submitEvent($event)">
+</app-album-form>

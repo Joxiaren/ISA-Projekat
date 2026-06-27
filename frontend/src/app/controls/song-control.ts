@@ -1,4 +1,5 @@
 import { computed, inject, Injectable, signal, WritableSignal } from '@angular/core';
+import { AlbumControl } from 'app/controls/album-control';
 import { ArtistControl } from 'app/controls/artist-control';
 import { BaseControl } from 'app/controls/base-control';
 import { SongService } from 'app/services/song-service';
@@ -15,8 +16,10 @@ export class SongControl extends BaseControl<Song>{
   override itemEdit = signal<SongRequest | null>(null);
 
   artistControl = inject(ArtistControl);
+  albumControl = inject(AlbumControl);
 
   artistItems = computed(() => this.artistControl.items());
+  albumItems = computed(() => this.albumControl.items());
 
   override getAllItems(): void {
     this.service?.getAll().subscribe((data) => {
@@ -56,5 +59,6 @@ export class SongControl extends BaseControl<Song>{
   override dataRefresh(){
     this.getAllItems();
     this.artistControl.getAllItems();
+    this.albumControl.getAllItems();
   }
 }

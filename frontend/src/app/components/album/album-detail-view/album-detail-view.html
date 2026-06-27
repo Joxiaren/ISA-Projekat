@@ -1,0 +1,31 @@
+<div>
+    @if(itemShow != null){
+        <h2>Artist info</h2>
+        <div>{{itemShow.id}}</div>
+        <div>{{itemShow.name}}</div>
+        <div>{{itemShow.artist.name}}</div>
+        
+        @if(itemShow.songs.length > 0){
+            <h3>Songs</h3>
+            @for(item of itemShow.songs; track $index; let idx = $index){
+                <div class="song-row">{{idx + 1}}. {{item.name}}</div>
+            }
+        }
+        @if(itemShow.tags.length > 0){
+            <h3>Tags</h3>
+            @for(item of itemShow.tags; track $index;){
+                <div class="tag-row">{{item.name}}</div>
+            }
+        }
+
+        @if(itemShow.comments.length > 0){
+            <h4>Comments</h4>
+            @for(item of itemShow.comments; track $index;){
+                <div class="comment-row">{{item.content}}</div>
+            }
+        }
+    }
+    @else{
+        <div>None</div>
+    }
+</div>

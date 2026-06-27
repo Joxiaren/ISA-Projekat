@@ -2,6 +2,7 @@
 <app-song-form
     [editItem]="songControl.itemEdit()"
     [artists]="songControl.artistItems"
+    [albums]="songControl.albumItems"
     (addEmit)="songControl.addItem($event)"
     (editEmit)="songControl.editItem($event)"
     (submitEmit)="submitEvent($event)"

@@ -1,0 +1,19 @@
+<table>
+    <thead>
+        <th>ID</th>
+        <th>Tag Name</th>
+        <th>Actions</th>
+    </thead>
+    <tbody>
+        @for(item of itemsShow(); track item.id){
+            <tr (click)="detailView(item.id)">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>
+                    <button appClickStopPropagation (click)="deleteEvent(item.id)">Delete</button>
+                    <button appClickStopPropagation (click)="editEvent(item.id)">Edit</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

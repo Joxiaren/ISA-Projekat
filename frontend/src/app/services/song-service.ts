@@ -25,11 +25,14 @@ export class SongService extends BaseService<Song>{
 
   override async update(id: number, item: SongRequest){
     let formData = new FormData();
-    let data = {"name": item.name, "artist": item.artist, "url": item.url};
+    let data = {"name": item.name, "artist": item.artist, "album": item.album,"url": item.url};
 
     if(item.songFile != null){
       let fileBytes = await item.songFile.bytes();
       formData.append("songFile", new Blob([fileBytes]));
+    }
+    else{
+      formData.append("songFile", new Blob([]));
     }
 
     formData.append("item", new Blob([JSON.stringify(data)], { type: 'application/json'}));
