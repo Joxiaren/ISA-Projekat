@@ -1,1 +1,0 @@
-package xyz.jovanstoiljkovic.isa.dtos;import xyz.jovanstoiljkovic.isa.models.Album;public class AlbumDTO extends BaseDTO<Album>{}
