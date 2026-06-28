@@ -30,6 +30,8 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
+
+
         return httpSecurity
                 .cors(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
@@ -43,6 +45,7 @@ public class WebSecurityConfig {
 
                         .requestMatchers( HttpMethod.GET,"/songs/**").permitAll()
                         .requestMatchers( HttpMethod.GET,"/api/song/**").permitAll()
+                        .requestMatchers( HttpMethod.PATCH, "/api/song/**").hasAnyAuthority("USER", "ADMIN")
 
                         .requestMatchers( HttpMethod.GET, "/api/artist/**").permitAll()
 

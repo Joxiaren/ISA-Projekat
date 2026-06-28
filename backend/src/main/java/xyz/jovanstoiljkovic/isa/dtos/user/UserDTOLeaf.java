@@ -4,6 +4,7 @@ import xyz.jovanstoiljkovic.isa.dtos.BaseDTO;
 import xyz.jovanstoiljkovic.isa.models.User;
 
 public class UserDTOLeaf extends BaseDTO<User> {
+    private Long id;
     private String name;
     private String surname;
     private String email;
@@ -14,7 +15,8 @@ public class UserDTOLeaf extends BaseDTO<User> {
     public UserDTOLeaf() {
     }
 
-    public UserDTOLeaf(String name, String surname, String email, String username, String password, String profilePicture) {
+    public UserDTOLeaf(Long id, String name, String surname, String email, String username, String password, String profilePicture) {
+        this.id = id;
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -22,7 +24,13 @@ public class UserDTOLeaf extends BaseDTO<User> {
         this.password = password;
         this.profilePicture = profilePicture;
     }
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
     public String getName() {
         return name;
     }
